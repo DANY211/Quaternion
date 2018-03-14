@@ -13,6 +13,7 @@ public class QuaternionVector {
         this.z = z;
     }
 
+
     public double getX() {
         return x;
     }

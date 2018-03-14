@@ -51,6 +51,8 @@ public class Quaternion {
 
     public double abs() { return Math.sqrt(a * a + x * x + y * y + z * z); }
 
+    public Quaternion normalization() { return new Quaternion (a * a, x * x, y * y, z * z); }
+
     public Quaternion divideOnNumber(double n) {
         if (n != 0) return new Quaternion(a / n, x / n, y / n, z / n);
         else throw new ArithmeticException("division by zero");
@@ -70,8 +72,8 @@ public class Quaternion {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object != null && object instanceof Quaternion) {
-            Quaternion other = (Quaternion) object;
-            return a == other.a && x == other.x && y == other.y && z == other.z;
+            Quaternion o = (Quaternion) object;
+            return a == o.a && x == o.x && y == o.y && z == o.z;
         }
         return false;
     }
