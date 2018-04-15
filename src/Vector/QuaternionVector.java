@@ -26,6 +26,14 @@ public class QuaternionVector {
         return z;
     }
 
+    public double length(){
+        return Math.sqrt(x * x + y * y + z * z);
+    }
+    public QuaternionVector normalize(){
+        double length = length();
+        return new QuaternionVector(x/length, y/length, z/length);
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;

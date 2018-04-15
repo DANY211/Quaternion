@@ -40,9 +40,15 @@ public class Quaternion {
         return new Quaternion(a * n, x * n, y * n, z * n);
     }
 
-    public Quaternion multiply(Quaternion b) {
-        return new Quaternion(a * b.a - x * b.x - y * b.y - z * b.z, a * b.x + x * b.a + y * b.z - z * b.y,
-                a * b.y - x * b.z + y * b.a + z * b.x, a * b.z + x * b.y - y * b.x + z * b.a);
+    /**
+     * @param other quaternion to multiplication
+     * @return quaternion of two multiplied quaternions
+     */
+    public Quaternion multiply(Quaternion other) {
+        return new Quaternion(a * other.a - x * other.x - y * other.y - z * other.z,
+                a * other.x + x * other.a + y * other.z - z * other.y,
+                a * other.y - x * other.z + y * other.a + z * other.x,
+                a * other.z + x * other.y - y * other.x + z * other.a);
     }
 
     public Quaternion plus(Quaternion b) { return new Quaternion(a + b.a, x + b.x, y + b.y, z + b.z); }
@@ -51,7 +57,7 @@ public class Quaternion {
 
     public double abs() { return Math.sqrt(a * a + x * x + y * y + z * z); }
 
-    public Quaternion normalization() { return new Quaternion (a * a, x * x, y * y, z * z); }
+    public Quaternion normalize() { return new Quaternion (a * a, x * x, y * y, z * z); }
 
     public Quaternion divideOnNumber(double n) {
         if (n != 0) return new Quaternion(a / n, x / n, y / n, z / n);

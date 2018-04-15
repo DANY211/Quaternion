@@ -1,7 +1,6 @@
 package Quaternion;
 
 import Vector.QuaternionVector;
-import com.sun.xml.internal.ws.util.QNameMap;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -51,10 +50,10 @@ public class Tests {
     }
 
     @Test
-    public void normalization(){
-        assertEquals(new Quaternion(100, 9,169,0.0256), new Quaternion(10, -3, 13.0, -0.16).normalization());
-        assertEquals(new Quaternion(0, 1,25,261.1456), new Quaternion(0, -1, 5, -16.16).normalization());
-        assertEquals(new Quaternion(225, 81,289,1), new Quaternion(-15, -9, -17, 1).normalization());
+    public void normalize(){
+        assertEquals(new Quaternion(100, 9,169,0.0256), new Quaternion(10, -3, 13.0, -0.16).normalize());
+        assertEquals(new Quaternion(0, 1,25,261.1456), new Quaternion(0, -1, 5, -16.16).normalize());
+        assertEquals(new Quaternion(225, 81,289,1), new Quaternion(-15, -9, -17, 1).normalize());
 
     }
 
