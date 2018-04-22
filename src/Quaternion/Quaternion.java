@@ -17,13 +17,6 @@ public class Quaternion {
         this.z = z;
     }
 
-    public Quaternion() {
-        this.a = 0;
-        this.x = 0;
-        this.y = 0;
-        this.z = 0;
-
-    }
 
     public Quaternion(double a, QuaternionVector v) {
         this.a = a;
@@ -57,14 +50,14 @@ public class Quaternion {
 
     public double abs() { return Math.sqrt(a * a + x * x + y * y + z * z); }
 
-    public Quaternion normalize() { return new Quaternion (a * a, x * x, y * y, z * z); }
+    public double norm() { return  (a * a + x * x + y * y + z * z); }
 
     public Quaternion divideOnNumber(double n) {
         if (n != 0) return new Quaternion(a / n, x / n, y / n, z / n);
         else throw new ArithmeticException("division by zero");
     }
 
-    public Quaternion inverse() { return this.conjugation().divideOnNumber(this.abs() * this.abs()); }
+    public Quaternion inverse() {return conjugation().divideOnNumber(Math.pow(abs(), 2d));}
 
     public Quaternion rational() { return this.divideOnNumber(this.abs()); }
 

@@ -24,11 +24,12 @@ public class Tests {
 
     @Test
     public void getAxis() {
-        assertEquals(new Quaternion(1, 2, 3, 4).getVectorPart(), QuaternionUtilites.getAxis(new Quaternion(1, 2, 3, 4)));
+        assertEquals(new QuaternionVector(2, 3, 4), QuaternionUtilites.getAxis(new Quaternion(1, 2, 3, 4)));
+
     }
 
     @Test
     public void getAngle() {
-        assertEquals(new Quaternion(1, 2, 3, 4).getScalarPart(), QuaternionUtilites.getAngle(new Quaternion(1, 2, 3, 4)), 1e-10);
+        assertEquals(1, QuaternionUtilites.getAngle(new Quaternion(1, 2, 3, 4)), 1e-10);
     }
 }

@@ -26,9 +26,10 @@ public class QuaternionVector {
         return z;
     }
 
-    public double length(){
+    private double length(){
         return Math.sqrt(x * x + y * y + z * z);
     }
+
     public QuaternionVector normalize(){
         double length = length();
         return new QuaternionVector(x/length, y/length, z/length);

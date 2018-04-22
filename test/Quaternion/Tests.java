@@ -50,10 +50,10 @@ public class Tests {
     }
 
     @Test
-    public void normalize(){
-        assertEquals(new Quaternion(100, 9,169,0.0256), new Quaternion(10, -3, 13.0, -0.16).normalize());
-        assertEquals(new Quaternion(0, 1,25,261.1456), new Quaternion(0, -1, 5, -16.16).normalize());
-        assertEquals(new Quaternion(225, 81,289,1), new Quaternion(-15, -9, -17, 1).normalize());
+    public void norm(){
+        assertEquals(278.0256, new Quaternion(10, -3, 13.0, -0.16).norm(),1e-10);
+        assertEquals(287.1456, new Quaternion(0, -1, 5, -16.16).norm(),1e-10);
+        assertEquals(596.0, new Quaternion(-15, -9, -17, 1).norm(),1e-10);
 
     }
 
@@ -117,6 +117,16 @@ public class Tests {
         assertEquals(expQ.getVectorPart().getY(), resQ.getVectorPart().getY(), 1e-6);
         assertEquals(expQ.getVectorPart().getZ(), resQ.getVectorPart().getZ(), 1e-6);
 
+    }
+    @Test
+    public void getScalarPart(){
+        assertEquals(1, new Quaternion(1, 2, 3, 4).getScalarPart(), 1e-10);
+
+    }
+
+    @Test
+    public void getVectorPart() {
+        assertEquals(new QuaternionVector(2, 3, 4), new Quaternion(1,2,3,4).getVectorPart());
     }
 
     @Test
