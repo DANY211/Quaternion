@@ -88,11 +88,9 @@ public class Tests {
         assertEquals(new Quaternion(0.25, -0.25, -0.25, -0.25), new Quaternion(1, 1, 1, 1).inverse());
         final Quaternion resQ = new Quaternion(10, -3, -11.0, 0.11).inverse();
         final Quaternion expQ = new Quaternion(0.043476, 0.0130428, 0.0478236, -0.000478236);
-        assertEquals(expQ.getScalarPart(), resQ.getScalarPart(), 1e-7);
-        assertEquals(expQ.getVectorPart().getX(), resQ.getVectorPart().getX(), 1e-7);
-        assertEquals(expQ.getVectorPart().getY(), resQ.getVectorPart().getY(), 1e-7);
-        assertEquals(expQ.getVectorPart().getZ(), resQ.getVectorPart().getZ(), 1e-7);
-        assertEquals(new Quaternion(0, -0.1, 0, 0), new Quaternion(0, 10, 0, 0).inverse());
+        isEquals(resQ, expQ, 1e-7);
+        assertEquals(new
+                Quaternion(0, -0.1, 0, 0), new Quaternion(0, 10, 0, 0).inverse());
         try {
             new Quaternion(0, 0, 0, 0).inverse();
             assertTrue(false);
@@ -100,8 +98,6 @@ public class Tests {
             assertTrue(true);
         }
     }
-
-
 
     @Test
     public void rational() {
@@ -114,10 +110,7 @@ public class Tests {
         }
         final Quaternion exp = new Quaternion(0.65795169496, -0.19738550848, -0.72374687176, 0.06579517016);
         final Quaternion res = new Quaternion(10, -3, -11.0, 1).rational();
-        assertEquals(exp.getScalarPart(), res.getScalarPart(), 1e-7);
-        assertEquals(exp.getVectorPart().getX(), res.getVectorPart().getX(), 1e-7);
-        assertEquals(exp.getVectorPart().getY(), res.getVectorPart().getY(), 1e-7);
-        assertEquals(exp.getVectorPart().getZ(), res.getVectorPart().getZ(), 1e-7);
+        isEquals(res, exp, 1e-7);
         assertEquals(new Quaternion(0, 0.6, 0, 0.8), new Quaternion(0, 6, 0, 8).rational());
     }
 
@@ -126,10 +119,7 @@ public class Tests {
         assertEquals(new Quaternion(1, 0, 0, 0), new Quaternion(1, 1, 1, 1).divide(new Quaternion(1, 1, 1, 1)));
         final Quaternion resQ = new Quaternion(5.2, -6, 2, 12.3).divide(new Quaternion(-5.5, 21, -2.3, -1));
         final Quaternion expQ = new Quaternion(-0.359133, -0.214621, -0.526323, -0.0717222);
-        assertEquals(expQ.getScalarPart(), resQ.getScalarPart(), 1e-6);
-        assertEquals(expQ.getVectorPart().getX(), resQ.getVectorPart().getX(), 1e-6);
-        assertEquals(expQ.getVectorPart().getY(), resQ.getVectorPart().getY(), 1e-6);
-        assertEquals(expQ.getVectorPart().getZ(), resQ.getVectorPart().getZ(), 1e-6);
+        isEquals(resQ,expQ,1e-6);
 
     }
     @Test
@@ -154,4 +144,11 @@ public class Tests {
         assertEquals("1.0+1.0m+1.0n+1.0p", new Quaternion(1, 1, 1, 1).toString());
 
     }
-}
+
+    private void isEquals(Quaternion resQ, Quaternion expQ, double del) {
+        assertEquals(expQ.getScalarPart(), resQ.getScalarPart(), del);
+        assertEquals(expQ.getVectorPart().getX(), resQ.getVectorPart().getX(), del);
+        assertEquals(expQ.getVectorPart().getY(), resQ.getVectorPart().getY(), del);
+        assertEquals(expQ.getVectorPart().getZ(), resQ.getVectorPart().getZ(), del);
+    }
+}}
