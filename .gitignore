@@ -36,11 +36,5 @@ target/
 .gitignore
 .idea/workspace.xml
 src/com/
-
-git rm -r --cached .idea
-git rm -r --cached misc.xml
-git rm -r --cached modules.xml
-git rm -r --cached uiDesigner.xml
-git rm -r --cached vcs.xml
-git rm -r --cached workspace.xml
-git rm -r --cached .fileTemplates
+Quaternion.iml
+target

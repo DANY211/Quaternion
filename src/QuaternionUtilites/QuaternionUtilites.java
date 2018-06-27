@@ -3,6 +3,7 @@ package QuaternionUtilites;
 import Quaternion.Quaternion;
 import Vector.QuaternionVector;
 
+
 public final class QuaternionUtilites {
 
     public static Quaternion getQuaternion(double w, QuaternionVector v) {

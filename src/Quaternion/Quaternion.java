@@ -50,14 +50,21 @@ public class Quaternion {
 
     public double abs() { return Math.sqrt(a * a + x * x + y * y + z * z); }
 
-    public double norm() { return  (a * a + x * x + y * y + z * z); }
+    public Quaternion normalize() {
+        double n = 1/(Math.sqrt(a * a + x * x + y * y + z * z));
+        return new Quaternion(a * n, x * n, y * n, z * n);
+    }
 
     public Quaternion divideOnNumber(double n) {
         if (n != 0) return new Quaternion(a / n, x / n, y / n, z / n);
         else throw new ArithmeticException("division by zero");
     }
 
-    public Quaternion inverse() {return conjugation().divideOnNumber(Math.pow(abs(), 2d));}
+    public Quaternion inverse() {
+        final double module = abs();
+        if (module == 0) return this;
+        final double squareModule = module * module;
+        return new Quaternion (a / squareModule, -x / squareModule, -y / squareModule, -z / squareModule);}
 
     public Quaternion rational() { return this.divideOnNumber(this.abs()); }
 
@@ -66,6 +73,7 @@ public class Quaternion {
     public double getScalarPart() { return a; }
 
     public QuaternionVector getVectorPart() { return new QuaternionVector(x, y, z); }
+
 
     @Override
     public boolean equals(Object object) {

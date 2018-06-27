@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 public class Tests {
 
+    private Quaternion Quaternion;
+
     @Test
     public void conjugation() {
         assertEquals(new Quaternion(-16.1, -4, -3.01, 13), new Quaternion(-16.1, 4, 3.01, -13).conjugation());
@@ -50,12 +52,22 @@ public class Tests {
     }
 
     @Test
-    public void norm(){
-        assertEquals(278.0256, new Quaternion(10, -3, 13.0, -0.16).norm(),1e-10);
-        assertEquals(287.1456, new Quaternion(0, -1, 5, -16.16).norm(),1e-10);
-        assertEquals(596.0, new Quaternion(-15, -9, -17, 1).norm(),1e-10);
-
+    public void normalize() throws Exception {
+        Quaternion = new Quaternion(1, 2, 3, 4);
+        assertEquals(new Quaternion(0.18257418583505536, 0.3651483716701107,
+                0.5477225575051661, 0.7302967433402214), Quaternion.normalize());
+        Quaternion = new Quaternion(2.4, -6.7, 4, 9.2);
+        assertEquals(new Quaternion(0.19512195121951223, -0.5447154471544716,
+                0.3252032520325204, 0.7479674796747968), Quaternion.normalize());
+        Quaternion = new Quaternion(26.45, -63.196, -19.3, -56.56);
+        assertEquals(new Quaternion(0.29094299964127757, -0.6951392743035983,
+                -0.21229489198777532, -0.6221450306128794), Quaternion.normalize());
     }
+
+
+
+
+
 
     @Test
     public void divideOnNumber() {
@@ -88,6 +100,8 @@ public class Tests {
             assertTrue(true);
         }
     }
+
+
 
     @Test
     public void rational() {
